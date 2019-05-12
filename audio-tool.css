@@ -38,18 +38,18 @@ label {
 }
 
 .play {
-  background: url(play.png);
+  background: url(icons/play.png);
   background-repeat: no-repeat;
   background-position: center center;
   margin: auto;
 }
 .pause {
-  background: url(pause.png);
+  background: url(icons/pause.png);
   background-repeat: no-repeat;
   background-position: center center;
 }
 .restart {
-  background: url(restart.png);
+  background: url(icons/restart.png);
   background-repeat: no-repeat;
   background-position: center center;
 }
