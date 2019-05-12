@@ -88,6 +88,7 @@ class audoTool extends HTMLElement {
     // this.audioElement.appendChild(mpegSrc);
     // this.audioElement.appendChild(oggSrc);
     // this.audioElement.appendChild(wavSrc);
+    this.audioElement.setAttribute("preload", "metadata");
     this.appendChild(this.audioElement);
   }
 
