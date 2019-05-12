@@ -12,6 +12,7 @@ class audoTool extends HTMLElement {
   //   restartButton;
   //   progressBar;
   //   titleElement;
+  //   playing;
 
   constructor() {
     super();
@@ -19,35 +20,56 @@ class audoTool extends HTMLElement {
   connectedCallback() {
     console.log("connected");
     this.generateAudioElement();
+    this.extractAttributesForAudioElement();
+    this.generateSections();
+    this.generatePlayPauseButton();
     this.generateTitle();
-    this.generatePlayButton();
-    this.generatePauseButton();
-    this.generateRestartButton();
     this.generateProgressBar();
     this.generateTimeStamp();
+    this.generateRestartButton();
+    this.generateCoverArt();
     this.setTime();
-    // this.height = "200";
-    // this.width = "100";
+    this.addRightSectionAnimation();
   }
   disconnectedCallback() {
     console.log("disconnected");
   }
 
-  generatePlayButton() {
-    this.playButton = document.createElement("button");
-    this.playButton.textContent = "play";
-    this.playButton.setAttribute("aria-label", "Play Button");
-    this.playButton.addEventListener("click", () => {
-      this.audioElement.play();
-    });
-    this.appendChild(this.playButton);
+  generateSections() {
+    //left
+    this.leftSection = document.createElement("div");
+    this.leftSection.id = "leftSection";
+    this.leftSection.className = "section";
+    this.appendChild(this.leftSection);
+    //middle
+    this.middleSection = document.createElement("div");
+    this.middleSection.id = "middleSection";
+    this.appendChild(this.middleSection);
+    //right
+    this.rightSection = document.createElement("div");
+    this.rightSection.id = "rightSection";
+    this.appendChild(this.rightSection);
+  }
 
-    if (this.hasAttribute("auto-play")) {
-      if (this.getAttribute("auto-play") === "true") {
-        this.audioElement.autoplay = true;
-        this.audioElement.load();
-      }
-    }
+  addRightSectionAnimation() {
+    this.rightSection.onmouseenter = () => {
+      this.coverArtElement.className = "hide";
+      this.restartButton.className = "restart";
+    };
+    //The right section's width and height alter depending on what is displayed.
+    //so adding a workaround
+    this.middleSection.onmouseenter = () => {
+      this.coverArtElement.className = "";
+      this.restartButton.className = "hide";
+    };
+    this.onmouseleave = () => {
+      this.coverArtElement.className = "";
+      this.restartButton.className = "hide";
+    };
+    this.leftSection.onmouseenter = () => {
+      this.coverArtElement.className = "";
+      this.restartButton.className = "hide";
+    };
   }
 
   generateAudioElement() {
@@ -67,7 +89,9 @@ class audoTool extends HTMLElement {
     // this.audioElement.appendChild(oggSrc);
     // this.audioElement.appendChild(wavSrc);
     this.appendChild(this.audioElement);
+  }
 
+  extractAttributesForAudioElement() {
     //define a song to be played
     if (this.hasAttribute("src")) {
       this.audioElement.src = this.getAttribute("src");
@@ -75,26 +99,50 @@ class audoTool extends HTMLElement {
     if (this.hasAttribute("preload")) {
       this.audioElement.preload = this.getAttribute("preload");
     }
+    if (this.hasAttribute("auto-play")) {
+      if (this.getAttribute("auto-play") === "true") {
+        this.audioElement.autoplay = true;
+        this.audioElement.load();
+      }
+    }
   }
 
-  generatePauseButton() {
-    this.audioButton = document.createElement("button");
-    this.audioButton.textContent = "pause";
-    this.audioButton.setAttribute("aria-label", "pause button");
-    this.audioButton.addEventListener("click", () => {
-      this.audioElement.pause();
+  generatePlayPauseButton() {
+    this.playPauseButton = document.createElement("button");
+    this.playPauseButton.className += "play";
+    this.playPauseButton.setAttribute("aria-label", "Play Button");
+    this.playing = false;
+    this.playPauseButton.addEventListener("click", () => {
+      if (!this.playing) {
+        this.playPauseButton.className = this.playPauseButton.className.replace("play", "pause");
+        this.playPauseButton.setAttribute("aria-label", "Pause Button");
+        this.audioElement.play();
+        this.playing = true;
+      } else {
+        this.playPauseButton.className = this.playPauseButton.className.replace("pause", "play");
+        this.playPauseButton.setAttribute("aria-label", "Play Button");
+        this.audioElement.pause();
+        this.playing = false;
+      }
     });
-    this.appendChild(this.audioButton);
+    this.leftSection.appendChild(this.playPauseButton);
   }
 
   generateRestartButton() {
     this.restartButton = document.createElement("button");
-    this.restartButton.textContent = "restart";
+    // this.restartButton.textContent = "restart";
+    this.restartButton.className = "hide";
     this.restartButton.addEventListener("click", () => {
       this.audioElement.currentTime = 0;
-      this.audioElement.play();
+      // update playPauseButton
+      if (this.playing) {
+        this.playPauseButton.className = this.playPauseButton.className.replace("play", "pause");
+        this.playPauseButton.setAttribute("aria-label", "Pause Button");
+        this.audioElement.play();
+        this.playing = true;
+      }
     });
-    this.appendChild(this.restartButton);
+    this.rightSection.appendChild(this.restartButton);
   }
 
   generateProgressBar() {
@@ -107,12 +155,12 @@ class audoTool extends HTMLElement {
       this.audioElement.currentTime = percent * this.audioElement.duration;
       this.progressBar.value = percent;
     });
-    this.appendChild(this.progressBar);
+    this.middleSection.appendChild(this.progressBar);
   }
 
   generateTimeStamp() {
     this.timeElement = document.createElement("label");
-    this.appendChild(this.timeElement);
+    this.middleSection.appendChild(this.timeElement);
   }
 
   generateTitle() {
@@ -123,7 +171,13 @@ class audoTool extends HTMLElement {
       this.titleElement.textContent = this.getAttribute("src");
     }
     this.titleElement.setAttribute("aria-label", "Song Title");
-    this.appendChild(this.titleElement);
+    this.middleSection.appendChild(this.titleElement);
+  }
+
+  generateCoverArt() {
+    this.coverArtElement = document.createElement("img");
+    this.coverArtElement.src = "ff7.jpg";
+    this.rightSection.appendChild(this.coverArtElement);
   }
 
   setTime() {
@@ -133,6 +187,12 @@ class audoTool extends HTMLElement {
         this.audioElement.ontimeupdate = () => {
           this.progressBar.value = this.audioElement.currentTime / this.audioElement.duration;
           this.timeElement.textContent = this.convertToMMSS(this.audioElement.currentTime) + " / " + this.convertToMMSS(this.audioElement.duration);
+          if (this.audioElement.currentTime === this.audioElement.duration) {
+            this.playing = false;
+            this.audioElement.currentTime = 0;
+            this.playPauseButton.className = this.playPauseButton.className.replace("pause", "play");
+            this.playPauseButton.setAttribute("aria-label", "Play Button");
+          }
         };
       };
     }

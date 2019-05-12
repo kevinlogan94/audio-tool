@@ -1,0 +1,67 @@
+audio-tool {
+  margin: 8px;
+  /* display: block; */
+  position: relative;
+  min-width: 200px;
+  min-height: 100px;
+  max-width: 500px;
+
+  border-radius: 8px/7px;
+  border: solid 1px #cbc9c9;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.31);
+
+  display: grid;
+  grid-template-columns: 15% 50% 35%;
+  justify-items: center;
+  align-items: center;
+}
+
+audio-tool > * {
+  position: relative;
+}
+
+button {
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  cursor: pointer;
+}
+progress {
+  cursor: pointer;
+  display: block;
+  margin: 8px;
+}
+
+label {
+  display: block;
+  margin: 8px;
+}
+
+.play {
+  background: url(play.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin: auto;
+}
+.pause {
+  background: url(pause.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.restart {
+  background: url(restart.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.hide {
+  opacity: 0;
+  position: absolute;
+}
+
+img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
