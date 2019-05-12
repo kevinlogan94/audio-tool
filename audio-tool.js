@@ -4,13 +4,14 @@
  */
 
 class audoTool extends HTMLElement {
-  audioElement;
-  playButton;
-  audioButton;
-  timeElement;
-  restartButton;
-  progressBar;
-  titleElement;
+  //  These bug out browsers so I'm commenting them out.
+  //   audioElement;
+  //   playButton;
+  //   audioButton;
+  //   timeElement;
+  //   restartButton;
+  //   progressBar;
+  //   titleElement;
 
   constructor() {
     super();
