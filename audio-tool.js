@@ -177,7 +177,11 @@ class audoTool extends HTMLElement {
 
   generateCoverArt() {
     this.coverArtElement = document.createElement("img");
-    this.coverArtElement.src = "ff7.jpg";
+    if (this.hasAttribute("img")) {
+      this.coverArtElement.src = this.getAttribute("img");
+    } else {
+      this.coverArtElement.src = "music-note.jpg";
+    }
     this.rightSection.appendChild(this.coverArtElement);
   }
 
