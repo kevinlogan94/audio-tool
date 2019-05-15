@@ -1,0 +1,142 @@
+audio-tool {
+  margin: 8px;
+  /* display: block; */
+  position: relative;
+  min-width: 200px;
+  min-height: 100px;
+  max-width: 500px;
+
+  /* border-radius: 8px/7px; */
+  border: solid 1px #cbc9c9;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.31);
+
+  display: grid;
+  grid-template-columns: 15% 50% 35%;
+  justify-items: center;
+  align-items: center;
+}
+
+audio-tool > * {
+  position: relative;
+}
+
+button {
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+  cursor: pointer;
+}
+progress {
+  cursor: pointer;
+  display: block;
+  margin: 8px;
+}
+
+label {
+  display: block;
+  margin: 8px;
+}
+
+.play {
+  background: url(../icons/play.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin: auto;
+}
+.pause {
+  background: url(../icons/pause.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.restart {
+  background: url(../icons/restart.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.hide {
+  opacity: 0;
+  position: absolute;
+}
+
+img {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+/* @media (min-width: 1281px) {
+  button {
+    height: 45px;
+    width: 45px;
+  }
+  audio-tool {
+    max-width: 500px;
+  }
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+/* @media (min-width: 1025px) and (max-width: 1280px) {
+  button {
+    height: 45px;
+    width: 45px;
+  }
+} */
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+/* @media (min-width: 768px) and (max-width: 1024px) {
+  button {
+    height: 45px;
+    width: 45px;
+  }
+} */
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+/* @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  button {
+    height: 45px;
+    width: 45px;
+  }
+} */
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+/* @media (min-width: 481px) and (max-width: 767px) {
+  button {
+    height: 45px;
+    width: 45px;
+  }
+} */
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+/* @media (min-width: 320px) and (max-width: 480px) {
+  button {
+    height: 45px;
+    width: 45px;
+  }
+}  */
