@@ -180,7 +180,7 @@ class audoTool extends HTMLElement {
     if (this.hasAttribute("img")) {
       this.coverArtElement.src = this.getAttribute("img");
     } else {
-      this.coverArtElement.src = "music-note.jpg";
+      this.coverArtElement.src = "../content/music-note.jpg";
     }
     this.rightSection.appendChild(this.coverArtElement);
   }
