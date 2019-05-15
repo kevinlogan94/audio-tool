@@ -4,6 +4,9 @@
   "description": "A lightweight audio custom web component",
   "main": "audio-tool.js",
   "author": "Kevin Logan <kevinmlogan7@gmail.com> (kevinmlogan.com)",
+  "scripts": {
+    "start": "./node_modules/.bin/babel src --out-dir dist"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/kevinlogan94"
@@ -22,5 +25,10 @@
     "tool",
     "minimalistic"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4"
+  }
 }
