@@ -27,9 +27,9 @@ class audoTool extends HTMLElement {
     this.generateProgressBar();
     this.generateTimeStamp();
     this.generateRestartButton();
-    this.generateCoverArt();
+    // this.generateCoverArt();
     this.setTime();
-    this.addRightSectionAnimation();
+    // this.addRightSectionAnimation();
   }
   disconnectedCallback() {
     console.log("disconnected");
@@ -132,7 +132,7 @@ class audoTool extends HTMLElement {
   generateRestartButton() {
     this.restartButton = document.createElement("button");
     // this.restartButton.textContent = "restart";
-    this.restartButton.className = "hide";
+    this.restartButton.className = "restart";
     this.restartButton.addEventListener("click", () => {
       this.audioElement.currentTime = 0;
       // update playPauseButton

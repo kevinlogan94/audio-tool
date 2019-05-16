@@ -1,0 +1,90 @@
+audio-tool,
+audio-tool > * {
+  position: relative;
+  display: block;
+  margin: 8px;
+  padding: 8px;
+}
+
+audio-tool {
+  border: solid 1px #cbc9c9;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.31);
+  border-radius: 8px/7px;
+
+  /* CSS-Grid */
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: 15% 70% 15%;
+
+  max-width: 500px;
+  width: 80%;
+  height: 175px;
+}
+
+button {
+  border-radius: 50%;
+  border: 1px solid #000;
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
+}
+
+progress {
+  cursor: pointer;
+  display: block;
+  width: auto;
+  height: 50px;
+}
+
+label {
+  display: block;
+  font-size: 1em;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+.play {
+  background: url(../icons/play.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin: auto;
+}
+
+.pause {
+  background: url(../icons/pause.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.restart {
+  background: url(../icons/restart.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* ------------ */
+
+#leftSection {
+  order: 1;
+  width: auto;
+  height: auto;
+}
+
+#middleSection {
+  order: 2;
+  height: auto;
+  width: 90%;
+}
+
+#rightSection {
+  order: 3;
+  height: auto;
+  width: auto;
+}
+
+script {
+  display: none;
+}
