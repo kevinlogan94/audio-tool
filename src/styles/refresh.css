@@ -58,39 +58,39 @@ h1 {
 }
 
 .play {
-  background: url(../icons/play.png);
+  background: url(../../icons/play.png);
   background-repeat: no-repeat;
   background-position: center center;
   margin: auto;
 }
 
 .pause {
-  background: url(../icons/pause.png);
+  background: url(../../icons/pause.png);
   background-repeat: no-repeat;
   background-position: center center;
 }
 
 .restart {
-  background: url(../icons/restart.png);
+  background: url(../../icons/restart.png);
   background-repeat: no-repeat;
   background-position: center center;
 }
 
 /* ------------ */
 
-#leftSection {
+.left-section {
   order: 1;
   width: auto;
   height: auto;
 }
 
-#middleSection {
+.middle-section {
   order: 2;
   height: auto;
   width: 90%;
 }
 
-#rightSection {
+.right-section {
   order: 3;
   height: auto;
   width: auto;

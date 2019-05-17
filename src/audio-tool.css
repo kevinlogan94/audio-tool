@@ -1,175 +1,98 @@
 audio-tool {
-  display: block;
   position: relative;
-
-  border: solid 1px #cbc9c9;
+  display: block;
+  margin: 8px;
+  padding: 8px;
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.31);
-
+  -webkit-box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.31);
+  -moz-box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.31);
+  border: solid 1px #cbc9c9;
+  border-radius: 8px/7px;
+  /* CSS-Grid */
   display: grid;
   justify-items: center;
   align-items: center;
-
-  overflow: hidden;
+  grid-template-columns: 15% 70% 15%;
+  max-width: 500px;
+  width: 80%;
+  height: 175px;
 }
 
-audio-tool > * {
+audio-tool * {
   position: relative;
+  display: block;
+  margin: 8px;
+  padding: 8px;
 }
 
-button {
+audio-tool button {
   border-radius: 50%;
   border: 1px solid #000;
   cursor: pointer;
+  width: 45px;
+  height: 45px;
 }
 
-progress {
+audio-tool button:focus,
+audio-tool button:active {
+  -webkit-box-shadow: inset 0px 0px 10px #c1c1c1;
+  -moz-box-shadow: inset 0px 0px 10px #c1c1c1;
+  box-shadow: inset 0px 0px 10px #c1c1c1;
+  outline: none;
+}
+
+audio-tool progress {
   cursor: pointer;
   display: block;
-  margin: 8px;
+  width: auto;
+  height: 50px;
 }
 
-label {
+audio-tool label {
   display: block;
-  margin: 8px;
+  font-size: 1em;
 }
 
-img {
-  display: block;
+audio-tool h1 {
+  font-size: 1.5em;
 }
 
-.play {
+audio-tool style {
+  display: none;
+}
+
+audio-tool .play {
   background: url(../icons/play.png);
   background-repeat: no-repeat;
   background-position: center center;
-  margin: auto;
 }
 
-.pause {
+audio-tool .pause {
   background: url(../icons/pause.png);
   background-repeat: no-repeat;
   background-position: center center;
 }
 
-.restart {
+audio-tool .restart {
   background: url(../icons/restart.png);
   background-repeat: no-repeat;
   background-position: center center;
 }
 
-.hide {
-  opacity: 0;
-  position: absolute;
-}
-
-/* Mobile Essentials */
-
-audio-tool {
-  grid-template-rows: 60% 25% 15%;
-  margin: 0;
-  padding: 8px;
-  height: 1200px;
-}
-
-#leftSection {
-  order: 3;
-  width: 25%;
-  height: 85%;
-}
-
-#middleSection {
-  order: 2;
-  height: 100%;
-  width: 95%;
-}
-
-#rightSection {
+audio-tool .left-section {
   order: 1;
-  height: 85%;
-  width: 85%;
+  height: auto;
+  width: auto;
 }
 
-h1 {
-  text-align: center;
-  font-size: 5em;
+audio-tool .middle-section {
+  order: 2;
+  height: auto;
+  width: 90%;
 }
 
-label {
-  font-size: 3em;
-}
-
-progress[value] {
-  width: 100%;
-  height: 50px;
-}
-
-img {
-  height: 100%;
-  width: 100%;
-}
-
-button {
-  height: 100%;
-  width: 100%;
-}
-
-/*
- * -- TABLET (AND UP) MEDIA QUERIES --
- * On tablets and other medium-sized devices, we want to customize some
- * of the mobile styles.
- */
-@media (min-width: 48em) {
-  audio-tool {
-    grid-template-rows: none;
-    grid-template-columns: 15% 50% 35%;
-    max-width: 500px;
-    border-radius: 8px/7px;
-    width: 500px;
-    height: 175px;
-    margin: 8px;
-  }
-
-  #leftSection {
-    order: 1;
-    width: auto;
-    height: auto;
-  }
-
-  #middleSection {
-    order: 2;
-    height: auto;
-    width: auto;
-  }
-
-  #rightSection {
-    order: 3;
-    height: auto;
-    width: auto;
-  }
-
-  img {
-    width: 100%;
-    height: 100%;
-  }
-
-  h1 {
-    text-align: left;
-    font-size: 2em;
-  }
-
-  label {
-    font-size: 1em;
-  }
-
-  button {
-    width: 45px;
-    height: 45px;
-  }
-}
-
-/*
- * -- DESKTOP (AND UP) MEDIA QUERIES --
- * On desktops and other large devices, we want to over-ride some
- * of the mobile and tablet styles.
- */
-@media (min-width: 78em) {
+audio-tool .right-section {
+  order: 3;
+  height: auto;
+  width: auto;
 }

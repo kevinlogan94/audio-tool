@@ -3,22 +3,12 @@
  * Create by Kevin Logan
  */
 
-class audoTool extends HTMLElement {
-  //  These bug out browsers so I'm commenting them out.
-  //   audioElement;
-  //   playButton;
-  //   audioButton;
-  //   timeElement;
-  //   restartButton;
-  //   progressBar;
-  //   titleElement;
-  //   playing;
-
+class audioTool extends HTMLElement {
   constructor() {
     super();
   }
   connectedCallback() {
-    console.log("connected");
+    this.addStyles();
     this.generateAudioElement();
     this.extractAttributesForAudioElement();
     this.generateSections();
@@ -27,67 +17,45 @@ class audoTool extends HTMLElement {
     this.generateProgressBar();
     this.generateTimeStamp();
     this.generateRestartButton();
-    // this.generateCoverArt();
     this.setTime();
-    // this.addRightSectionAnimation();
   }
-  disconnectedCallback() {
-    console.log("disconnected");
+  disconnectedCallback() {}
+
+  addStyles() {
+    if (!this.hasAttribute("styles") || this.getAttribute("styles") !== "false") {
+      //http://jonraasch.com/blog/javascript-style-node
+      this.styles = document.createElement("style");
+      this.styles.type = "text/css";
+
+      let css =
+        "audio-tool{position:relative;display:block;margin:8px;padding:8px;box-shadow:1px 2px 5px rgba(0,0,0,0.31);-webkit-box-shadow:1px 2px 5px rgba(0,0,0,0.31);-moz-box-shadow:1px 2px 5px rgba(0,0,0,0.31);border:solid 1px #cbc9c9;border-radius:8px/7px;display:grid;justify-items:center;align-items:center;grid-template-columns:15% 70% 15%;max-width:500px;width:80%;height:175px}audio-tool *{position:relative;display:block;margin:8px;padding:8px}audio-tool button{border-radius:50%;border:1px solid #000;cursor:pointer;width:45px;height:45px}audio-tool button:focus,audio-tool button:active{-webkit-box-shadow:inset 0px 0px 10px #c1c1c1;-moz-box-shadow:inset 0px 0px 10px #c1c1c1;box-shadow:inset 0px 0px 10px #c1c1c1;outline:none}audio-tool progress{cursor:pointer;display:block;width:auto;height:50px}audio-tool label{display:block;font-size:1em}audio-tool h1{font-size:1.5em}audio-tool style{display:none}audio-tool .play{background:url(../icons/play.png);background-repeat:no-repeat;background-position:center center}audio-tool .pause{background:url(../icons/pause.png);background-repeat:no-repeat;background-position:center center}audio-tool .restart{background:url(../icons/restart.png);background-repeat:no-repeat;background-position:center center}audio-tool .left-section{order:1;height:auto;width:auto}audio-tool .middle-section{order:2;height:auto;width:90%}audio-tool .right-section{order:3;height:auto;width:auto}";
+
+      if (this.styles.styleSheet) this.styles.styleSheet.cssText = css;
+      else this.styles.appendChild(document.createTextNode(css));
+
+      //Add these styles to the head
+      document.getElementsByTagName("head")[0].appendChild(this.styles);
+    }
   }
 
   generateSections() {
     //left
     this.leftSection = document.createElement("div");
-    this.leftSection.id = "leftSection";
-    this.leftSection.className = "section";
+    this.leftSection.className = "left-section";
     this.appendChild(this.leftSection);
     //middle
     this.middleSection = document.createElement("div");
-    this.middleSection.id = "middleSection";
+    this.middleSection.className = "middle-section";
     this.appendChild(this.middleSection);
     //right
     this.rightSection = document.createElement("div");
-    this.rightSection.id = "rightSection";
+    this.rightSection.className = "right-section";
     this.appendChild(this.rightSection);
-  }
-
-  addRightSectionAnimation() {
-    this.rightSection.onmouseenter = () => {
-      this.coverArtElement.className = "hide";
-      this.restartButton.className = "restart";
-    };
-    //The right section's width and height alter depending on what is displayed.
-    //so adding a workaround
-    this.middleSection.onmouseenter = () => {
-      this.coverArtElement.className = "";
-      this.restartButton.className = "hide";
-    };
-    this.onmouseleave = () => {
-      this.coverArtElement.className = "";
-      this.restartButton.className = "hide";
-    };
-    this.leftSection.onmouseenter = () => {
-      this.coverArtElement.className = "";
-      this.restartButton.className = "hide";
-    };
   }
 
   generateAudioElement() {
     this.audioElement = document.createElement("audio");
     // this.audioElement.textContent = "Your browser does not support the audio element.";
-
-    //Create source elements
-    // let mpegSrc = document.createElement("source");
-    // mpegSrc.setAttribute("type", "audio/mpeg");
-    // let oggSrc = document.createElement("source");
-    // oggSrc.setAttribute("type", "audio/ogg");
-    // let wavSrc = document.createElement("source");
-    // wavSrc.setAttribute("type", "audio/wav");
-
-    //Add source to audio element and then add audio element to <audio-tool>.
-    // this.audioElement.appendChild(mpegSrc);
-    // this.audioElement.appendChild(oggSrc);
-    // this.audioElement.appendChild(wavSrc);
     this.audioElement.setAttribute("preload", "metadata");
     this.appendChild(this.audioElement);
   }
@@ -131,12 +99,11 @@ class audoTool extends HTMLElement {
 
   generateRestartButton() {
     this.restartButton = document.createElement("button");
-    // this.restartButton.textContent = "restart";
     this.restartButton.className = "restart";
     this.restartButton.addEventListener("click", () => {
       this.audioElement.currentTime = 0;
       // update playPauseButton
-      if (this.playing) {
+      if (!this.playing) {
         this.playPauseButton.className = this.playPauseButton.className.replace("play", "pause");
         this.playPauseButton.setAttribute("aria-label", "Pause Button");
         this.audioElement.play();
@@ -173,16 +140,6 @@ class audoTool extends HTMLElement {
     }
     this.titleElement.setAttribute("aria-label", "Song Title");
     this.middleSection.appendChild(this.titleElement);
-  }
-
-  generateCoverArt() {
-    this.coverArtElement = document.createElement("img");
-    if (this.hasAttribute("img")) {
-      this.coverArtElement.src = this.getAttribute("img");
-    } else {
-      this.coverArtElement.src = "../content/music-note.jpg";
-    }
-    this.rightSection.appendChild(this.coverArtElement);
   }
 
   setTime() {
@@ -230,4 +187,4 @@ class audoTool extends HTMLElement {
   }
 }
 
-customElements.define("audio-tool", audoTool);
+customElements.define("audio-tool", audioTool);
