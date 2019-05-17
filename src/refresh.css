@@ -7,8 +7,11 @@ audio-tool > * {
 }
 
 audio-tool {
-  border: solid 1px #cbc9c9;
   box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.31);
+  -webkit-box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.31);
+  -moz-box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.31);
+
+  border: solid 1px #cbc9c9;
   border-radius: 8px/7px;
 
   /* CSS-Grid */
@@ -30,6 +33,14 @@ button {
   height: 45px;
 }
 
+button:focus,
+button:active {
+  -webkit-box-shadow: inset 0px 0px 10px #c1c1c1;
+  -moz-box-shadow: inset 0px 0px 10px #c1c1c1;
+  box-shadow: inset 0px 0px 10px #c1c1c1;
+  outline: none;
+}
+
 progress {
   cursor: pointer;
   display: block;
@@ -43,7 +54,7 @@ label {
 }
 
 h1 {
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
 .play {
