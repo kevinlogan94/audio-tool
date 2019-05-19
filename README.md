@@ -1,10 +1,10 @@
+### :construction_worker: In Progress :construction_worker:
+
 # audio-tool
 
 A lightweight audio custom web component
 
 ### [Demo](http://www.kevinmlogan.com/audio-tool/)
-
-# THIS PROJECT IS IN PROGRESS
 
 https://icons8.com/icons/set/pause
 css-grid
