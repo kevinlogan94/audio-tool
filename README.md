@@ -1,18 +1,14 @@
-### :construction_worker: In Progress :construction_worker:
+<h3 align="center">:construction_worker: In Progress :construction_worker:</p>
 
-# audio-tool
+<h1 align="center">audio-tool</h1>
 
-## A lightweight audio custom web component
+<h3 align="center">A lightweight audio custom web component</h3>
 
 <p align="center">
- <a>
-   [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
- </a>
+ <a href="https://prettier.io">
+    <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square"></a>
  <a href="https://www.npmjs.com/package/prettier">
     <img alt="npm version" src="https://img.shields.io/npm/v/prettier.svg?style=flat-square">
- </a>
- <a>
-   [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/owner/my-element)
  </a>
 </p>
 
@@ -70,7 +66,7 @@ Add the following meta tag for responsiveness across all devices.
 
 ## Specs
 
-|:--:|:--:|
+|:--:|:--:|:--:|
 |CSS Grid||
 |No Shadow DOM||
 |es5+ transpiled down to es5||
@@ -80,6 +76,8 @@ Add the following meta tag for responsiveness across all devices.
 ## License
 
 [MIT License](https://github.com/kevinlogan94/audio-tool/blob/master/README.md)
+
+
 https://icons8.com/icons/set/pause
 css-grid
 
