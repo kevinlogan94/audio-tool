@@ -5,11 +5,12 @@
 <h3 align="center">A lightweight audio custom web component</h3>
 
 <p align="center">
- <a href="https://prettier.io">
-    <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square"></a>
- <a href="https://www.npmjs.com/package/prettier">
-    <img alt="npm version" src="https://img.shields.io/npm/v/prettier.svg?style=flat-square">
- </a>
+    <a href="https://prettier.io">
+        <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square">
+    </a>
+    <a href="https://www.npmjs.com/package/prettier">
+        <img alt="npm version" src="https://img.shields.io/npm/v/prettier.svg?style=flat-square">
+    </a>
 </p>
 
 ## Live Demo
@@ -36,7 +37,7 @@ npm install audio-tool
 <audio-tool src="content/ff7-prelude.m4a" title="FF7 Prelude" auto-play="false"></audio-tool>
 ```
 
-## PollyFill
+## PolyFill
 
 Using a browser that doesn't natively support custom web components?
 
@@ -62,21 +63,20 @@ Add the following meta tag for responsiveness across all devices.
 | :-------: | :-----: | :------------------------------------------: | :-------------------------: |
 |    src    | string  |         the path to your audio file          |            none             |
 |   title   | string  |           Define the track title.            | The path to your audio file |
-| auto-play | boolean | Automatically start playing the track onload |
+| auto-play | boolean | Automatically start playing the track onload |            false            |
 
 ## Specs
 
-|:--:|:--:|:--:|
-|CSS Grid||
-|No Shadow DOM||
-|es5+ transpiled down to es5||
-|customElement.define() native function|
-|[Material UI SVG Icons](https://www.materialui.co/icons)|
+- [CSS Grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
+- [Babel](https://babeljs.io/)
+- [Babel Minifier](https://github.com/babel/minify#readme)
+- [Live Sass compiler](https://marketplace.visualstudio.com/items?itemName=ritwickdey.live-sass)
+- [customElements.define()](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define)
+- [Material UI SVG Icons](https://www.materialui.co/icons)
 
 ## License
 
 [MIT License](https://github.com/kevinlogan94/audio-tool/blob/master/README.md)
-
 
 https://icons8.com/icons/set/pause
 css-grid
