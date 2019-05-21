@@ -8,7 +8,7 @@ class audioTool extends HTMLElement {
     super();
   }
   connectedCallback() {
-    this.addStyles();
+    // this.addStyles();
     this.generateAudioElement();
     this.extractAttributesForAudioElement();
     this.generateSections();
@@ -17,6 +17,7 @@ class audioTool extends HTMLElement {
     this.generateProgressBar();
     this.generateTimeStamp();
     this.generateRestartButton();
+    this.generateSvgs();
     this.setTime();
   }
   disconnectedCallback() {}
@@ -76,20 +77,75 @@ class audioTool extends HTMLElement {
     }
   }
 
+  generateSvgs() {
+    // Play Element
+    let boxWidth = 35;
+    let boxHeight = 35;
+    let viewBox = 25;
+    this.playSvgElem = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    this.playSvgElem.setAttributeNS(null, "viewBox", "0 0 " + viewBox + " " + viewBox);
+    this.playSvgElem.setAttributeNS(null, "width", boxWidth);
+    this.playSvgElem.setAttributeNS(null, "height", boxHeight);
+
+    let path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttributeNS(null, "d", "M8 5v14l11-7z");
+
+    this.playSvgElem.appendChild(path);
+
+    //Pause Element
+    boxWidth = 30;
+    boxHeight = 30;
+    viewBox = 25;
+    this.pauseSvgElem = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    this.pauseSvgElem.setAttributeNS(null, "viewBox", "0 0 " + viewBox + " " + viewBox);
+    this.pauseSvgElem.setAttributeNS(null, "width", boxWidth);
+    this.pauseSvgElem.setAttributeNS(null, "height", boxHeight);
+    this.pauseSvgElem.style.display = "none";
+
+    path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttributeNS(null, "d", "M6 19h4V5H6v14zm8-14v14h4V5h-4z");
+
+    this.pauseSvgElem.appendChild(path);
+
+    //Restart Element
+    boxWidth = 30;
+    boxHeight = 30;
+    viewBox = 17;
+    let restartSvgElem = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    restartSvgElem.setAttributeNS(null, "viewBox", "0 0 " + viewBox + " " + viewBox);
+    restartSvgElem.setAttributeNS(null, "width", boxWidth);
+    restartSvgElem.setAttributeNS(null, "height", boxHeight);
+    restartSvgElem.setAttributeNS(null, "class", "restart");
+
+    path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttributeNS(
+      null,
+      "d",
+      "M9 13.5c-2.49 0-4.5-2.01-4.5-4.5S6.51 4.5 9 4.5c1.24 0 2.36.52 3.17 1.33L10 8h5V3l-1.76 1.76C12.15 3.68 10.66 3 9 3 5.69 3 3.01 5.69 3.01 9S5.69 15 9 15c2.97 0 5.43-2.16 5.9-5h-1.52c-.46 2-2.24 3.5-4.38 3.5z"
+    );
+
+    restartSvgElem.appendChild(path);
+
+    this.playPauseButton.appendChild(this.playSvgElem);
+    this.playPauseButton.appendChild(this.pauseSvgElem);
+    this.restartButton.appendChild(restartSvgElem);
+  }
+
   generatePlayPauseButton() {
     this.playPauseButton = document.createElement("button");
-    this.playPauseButton.className += "play";
-    this.playPauseButton.setAttribute("aria-label", "Play Button");
+    this.playPauseButton.setAttribute("aria-label", "Play Audio");
     this.playing = false;
     this.playPauseButton.addEventListener("click", () => {
       if (!this.playing) {
-        this.playPauseButton.className = this.playPauseButton.className.replace("play", "pause");
-        this.playPauseButton.setAttribute("aria-label", "Pause Button");
+        this.pauseSvgElem.style.display = "block";
+        this.playSvgElem.style.display = "none";
+        this.playPauseButton.setAttribute("aria-label", "Pause Audio");
         this.audioElement.play();
         this.playing = true;
       } else {
-        this.playPauseButton.className = this.playPauseButton.className.replace("pause", "play");
-        this.playPauseButton.setAttribute("aria-label", "Play Button");
+        this.pauseSvgElem.style.display = "none";
+        this.playSvgElem.style.display = "block";
+        this.playPauseButton.setAttribute("aria-label", "Play Audio");
         this.audioElement.pause();
         this.playing = false;
       }
@@ -104,8 +160,9 @@ class audioTool extends HTMLElement {
       this.audioElement.currentTime = 0;
       // update playPauseButton
       if (!this.playing) {
-        this.playPauseButton.className = this.playPauseButton.className.replace("play", "pause");
-        this.playPauseButton.setAttribute("aria-label", "Pause Button");
+        this.pauseSvgElem.style.display = "block";
+        this.playSvgElem.style.display = "none";
+        this.playPauseButton.setAttribute("aria-label", "Pause Audio");
         this.audioElement.play();
         this.playing = true;
       }
@@ -152,8 +209,9 @@ class audioTool extends HTMLElement {
           if (this.audioElement.currentTime === this.audioElement.duration) {
             this.playing = false;
             this.audioElement.currentTime = 0;
-            this.playPauseButton.className = this.playPauseButton.className.replace("pause", "play");
-            this.playPauseButton.setAttribute("aria-label", "Play Button");
+            this.pauseSvgElem.style.display = "none";
+            this.playSvgElem.style.display = "block";
+            this.playPauseButton.setAttribute("aria-label", "Play Audio");
           }
         };
       };
