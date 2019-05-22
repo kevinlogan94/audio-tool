@@ -1,6 +1,6 @@
 {
   "name": "audio-tool",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A lightweight audio custom web component",
   "author": "Kevin Logan <kevinmlogan7@gmail.com> (kevinmlogan.com)",
   "scripts": {
