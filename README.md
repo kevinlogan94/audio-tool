@@ -9,7 +9,7 @@
         <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square">
     </a>
     <a href="https://www.npmjs.com/package/audio-tool">
-        <img alt="npm version" src="https://img.shields.io/npm/v/prettier.svg?style=flat-square">
+        <img alt="npm version" src="https://img.shields.io/npm/v/audio-tool.svg?style=flat-square">
     </a>
 </p>
 
@@ -32,7 +32,7 @@ npm install audio-tool
 1. Inject in the script through a script tag in the HEAD of your index.html.
 
 ```
-<script src="node_modules/audio-tool.js"></script>
+<script src="node_modules/audio-tool/dist/audio-tool.min.js"></script>
 ```
 
 2. Start using it in an html file.
