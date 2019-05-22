@@ -8,7 +8,7 @@
     <a href="https://prettier.io">
         <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square">
     </a>
-    <a href="https://www.npmjs.com/package/prettier">
+    <a href="https://www.npmjs.com/package/audio-tool">
         <img alt="npm version" src="https://img.shields.io/npm/v/prettier.svg?style=flat-square">
     </a>
 </p>
