@@ -19,7 +19,7 @@ audio-tool {
 
   max-width: 500px;
   width: 80%;
-  height: 175px;
+  height: 200px;
 
   * {
     position: relative;
@@ -28,7 +28,12 @@ audio-tool {
     padding: 8px;
   }
 
+  audio {
+    display: none;
+  }
+
   button {
+    background-color: transparent;
     border-radius: 50%;
     border: 1px solid #000;
     cursor: pointer;
@@ -48,7 +53,7 @@ audio-tool {
   progress {
     cursor: pointer;
     display: block;
-    width: auto;
+    width: 95%;
     height: 50px;
   }
 
@@ -58,7 +63,7 @@ audio-tool {
   }
 
   h1 {
-    font-size: 1.5em;
+    font-size: 1.25em;
   }
 
   style {
@@ -86,5 +91,11 @@ audio-tool {
     order: 3;
     height: auto;
     width: auto;
+  }
+
+  @media screen and (min-width: 48em) {
+    h1 {
+      font-size: 1.5em;
+    }
   }
 }

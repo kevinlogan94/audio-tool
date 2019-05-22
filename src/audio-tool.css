@@ -15,7 +15,7 @@ audio-tool {
   grid-template-columns: 15% 70% 15%;
   max-width: 500px;
   width: 80%;
-  height: 175px;
+  height: 200px;
 }
 
 audio-tool * {
@@ -25,12 +25,18 @@ audio-tool * {
   padding: 8px;
 }
 
+audio-tool audio {
+  display: none;
+}
+
 audio-tool button {
+  background-color: transparent;
   border-radius: 50%;
   border: 1px solid #000;
   cursor: pointer;
   width: 45px;
   height: 45px;
+  padding: 0;
 }
 
 audio-tool button:focus,
@@ -44,7 +50,7 @@ audio-tool button:active {
 audio-tool progress {
   cursor: pointer;
   display: block;
-  width: auto;
+  width: 95%;
   height: 50px;
 }
 
@@ -54,29 +60,16 @@ audio-tool label {
 }
 
 audio-tool h1 {
-  font-size: 1.5em;
+  font-size: 1.25em;
 }
 
 audio-tool style {
   display: none;
 }
 
-audio-tool .play {
-  background: url(../icons/play.png);
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-audio-tool .pause {
-  background: url(../icons/pause.png);
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-audio-tool .restart {
-  background: url(../icons/restart.png);
-  background-repeat: no-repeat;
-  background-position: center center;
+audio-tool svg {
+  margin: auto;
+  padding: 0;
 }
 
 audio-tool .left-section {
@@ -95,4 +88,10 @@ audio-tool .right-section {
   order: 3;
   height: auto;
   width: auto;
+}
+
+@media screen and (min-width: 48em) {
+  audio-tool h1 {
+    font-size: 1.5em;
+  }
 }

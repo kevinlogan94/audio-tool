@@ -8,9 +8,8 @@ class audioTool extends HTMLElement {
     super();
   }
   connectedCallback() {
-    // this.addStyles();
+    this.addStyles();
     this.generateAudioElement();
-    this.extractAttributesForAudioElement();
     this.generateSections();
     this.generatePlayPauseButton();
     this.generateTitle();
@@ -29,10 +28,13 @@ class audioTool extends HTMLElement {
       this.styles.type = "text/css";
 
       let css =
-        "audio-tool{position:relative;display:block;margin:8px;padding:8px;box-shadow:1px 2px 5px rgba(0,0,0,0.31);-webkit-box-shadow:1px 2px 5px rgba(0,0,0,0.31);-moz-box-shadow:1px 2px 5px rgba(0,0,0,0.31);border:solid 1px #cbc9c9;border-radius:8px/7px;display:grid;justify-items:center;align-items:center;grid-template-columns:15% 70% 15%;max-width:500px;width:80%;height:175px}audio-tool *{position:relative;display:block;margin:8px;padding:8px}audio-tool button{border-radius:50%;border:1px solid #000;cursor:pointer;width:45px;height:45px}audio-tool button:focus,audio-tool button:active{-webkit-box-shadow:inset 0px 0px 10px #c1c1c1;-moz-box-shadow:inset 0px 0px 10px #c1c1c1;box-shadow:inset 0px 0px 10px #c1c1c1;outline:none}audio-tool progress{cursor:pointer;display:block;width:auto;height:50px}audio-tool label{display:block;font-size:1em}audio-tool h1{font-size:1.5em}audio-tool style{display:none}audio-tool .play{background:url(../icons/play.png);background-repeat:no-repeat;background-position:center center}audio-tool .pause{background:url(../icons/pause.png);background-repeat:no-repeat;background-position:center center}audio-tool .restart{background:url(../icons/restart.png);background-repeat:no-repeat;background-position:center center}audio-tool .left-section{order:1;height:auto;width:auto}audio-tool .middle-section{order:2;height:auto;width:90%}audio-tool .right-section{order:3;height:auto;width:auto}";
+        "audio-tool{position:relative;display:block;margin:8px;padding:8px;box-shadow:1px 2px 5px rgba(0,0,0,0.31);-webkit-box-shadow:1px 2px 5px rgba(0,0,0,0.31);-moz-box-shadow:1px 2px 5px rgba(0,0,0,0.31);border:solid 1px #cbc9c9;border-radius:8px/7px;display:grid;justify-items:center;align-items:center;grid-template-columns:15% 70% 15%;max-width:500px;width:80%;height:200px}audio-tool *{position:relative;display:block;margin:8px;padding:8px}audio-tool audio{display:none}audio-tool button{background-color:transparent;border-radius:50%;border:1px solid #000;cursor:pointer;width:45px;height:45px;padding:0}audio-tool button:focus,audio-tool button:active{-webkit-box-shadow:inset 0px 0px 10px #c1c1c1;-moz-box-shadow:inset 0px 0px 10px #c1c1c1;box-shadow:inset 0px 0px 10px #c1c1c1;outline:none}audio-tool progress{cursor:pointer;display:block;width:95%;height:50px}audio-tool label{display:block;font-size:1em}audio-tool h1{font-size:1.25em}audio-tool style{display:none}audio-tool svg{margin:auto;padding:0}audio-tool .left-section{order:1;height:auto;width:auto}audio-tool .middle-section{order:2;height:auto;width:90%}audio-tool .right-section{order:3;height:auto;width:auto}@media screen and (min-width: 48em){audio-tool h1{font-size:1.5em}}";
 
-      if (this.styles.styleSheet) this.styles.styleSheet.cssText = css;
-      else this.styles.appendChild(document.createTextNode(css));
+      if (this.styles.styleSheet) {
+        this.styles.styleSheet.cssText = css;
+      } else {
+        this.styles.appendChild(document.createTextNode(css));
+      }
 
       //Add these styles to the head
       document.getElementsByTagName("head")[0].appendChild(this.styles);
@@ -56,9 +58,9 @@ class audioTool extends HTMLElement {
 
   generateAudioElement() {
     this.audioElement = document.createElement("audio");
-    // this.audioElement.textContent = "Your browser does not support the audio element.";
-    this.audioElement.setAttribute("preload", "metadata");
     this.appendChild(this.audioElement);
+    this.extractAttributesForAudioElement();
+    this.checkSong();
   }
 
   extractAttributesForAudioElement() {
@@ -215,6 +217,47 @@ class audioTool extends HTMLElement {
           }
         };
       };
+    }
+  }
+
+  checkSong() {
+    if (this.audioElement.src) {
+      let songFile = this.audioElement.src;
+      let fileType = songFile.substring(songFile.lastIndexOf(".") + 1);
+      //https://diveintohtml5.info/everything.html#audio-vorbis
+      switch (fileType) {
+        case "mp3":
+          if (!!!(this.audioElement.canPlayType && this.audioElement.canPlayType("audio/mpeg;").replace(/no/, ""))) {
+            this.titleElement.textContent = "This browser doesn't support MP3 Format audio file";
+          }
+          break;
+        case "m4a":
+          if (!!!(this.audioElement.canPlayType && this.audioElement.canPlayType('audio/mp4; codecs="mp4a.40.2"').replace(/no/, ""))) {
+            this.titleElement.textContent = "This browser doesn't support AAC Format audio file";
+          }
+          break;
+        case "aac":
+          if (!!!(this.audioElement.canPlayType && this.audioElement.canPlayType('audio/mp4; codecs="mp4a.40.2"').replace(/no/, ""))) {
+            this.titleElement.textContent = "This browser doesn't support AAC Format audio file";
+          }
+          break;
+        case "wav":
+          if (!!!(this.audioElement.canPlayType && this.audioElement.canPlayType('audio/wav; codecs="1"').replace(/no/, ""))) {
+            this.titleElement.textContent = "This browser doesn't support WAV Format audio file";
+          }
+          break;
+        case "ogg":
+          if (!!!(this.audioElement.canPlayType && this.audioElement.canPlayType('audio/ogg; codecs="vorbis"').replace(/no/, ""))) {
+            this.titleElement.textContent = "This browser doesn't support Vorbis Format audio file";
+          }
+          break;
+
+        default:
+          if (!!!this.audioElement.canPlayType("audio/" + fileType)) {
+            this.titleElement.textContent = "This browser doesn't support this audio file";
+          }
+          break;
+      }
     }
   }
 
