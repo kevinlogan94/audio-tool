@@ -9,10 +9,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kevinlogan94"
+    "url": "https://github.com/kevinlogan94/audio-tool"
   },
   "bugs": {
-    "url": "https://github.com/kevinlogan94"
+    "url": "https://github.com/kevinlogan94/audio-tool/issues"
   },
   "keywords": [
     "web-component",
