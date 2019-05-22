@@ -5,7 +5,9 @@
   "main": "audio-tool.js",
   "author": "Kevin Logan <kevinmlogan7@gmail.com> (kevinmlogan.com)",
   "scripts": {
-    "start": "./node_modules/.bin/babel src --out-dir dist"
+    "start": "npm run build && npm run minify",
+    "build": "./node_modules/.bin/babel src --out-dir dist",
+    "minify": "./node_modules/.bin/minify dist/audio-tool.js --out-file dist/audio-tool.min.js"
   },
   "repository": {
     "type": "git",
@@ -30,6 +32,6 @@
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
     "@babel/preset-env": "^7.4.4",
-    "babel-preset-minify": "^0.5.0"
+    "babel-minify": "^0.5.0"
   }
 }
