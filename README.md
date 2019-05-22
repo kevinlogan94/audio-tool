@@ -1,5 +1,3 @@
-<h3 align="center">:construction_worker: In Progress :construction_worker:</p>
-
 <h1 align="center">audio-tool</h1>
 
 <h3 align="center">A lightweight audio custom web component</h3>
