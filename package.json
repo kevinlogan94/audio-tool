@@ -2,7 +2,7 @@
   "name": "audio-tool",
   "version": "1.0.1",
   "main": "dist/audio-tool.min.js",
-  "description": "A lightweight audio custom web component",
+  "description": "A native audio custom web component",
   "author": "Kevin Logan <kevinmlogan7@gmail.com> (kevinmlogan.com)",
   "scripts": {
     "start": "npm run build && npm run minify",

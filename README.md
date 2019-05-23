@@ -1,6 +1,6 @@
 <h1 align="center">audio-tool</h1>
 
-<h3 align="center">A lightweight audio custom web component</h3>
+<h3 align="center">A native audio custom web component</h3>
 
 <p align="center">
     <a href="https://prettier.io">
