@@ -9,11 +9,14 @@
     <a href="https://www.npmjs.com/package/audio-tool">
         <img alt="npm version" src="https://img.shields.io/npm/v/audio-tool.svg?style=flat-square">
     </a>
+    <a href="https://www.webcomponents.org/element/kevinlogan/audio-tool">
+        <img alt="Published on webcomponents.org" src="https://img.shields.io/badge/webcomponents.org-published-blue.svg">
+    </a>
 </p>
 
 ## Description
 
-An audio custom web component built only with the native [customElements.define](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define) function and on top of the [HTML Audio element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio). No javascript library or framework attached.
+An audio custom web component built with the native [customElements.define](https://developer.mozilla.org/en-US/docs/Web/API/CustomElementRegistry/define) function and on top of the [HTML Audio element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio). No javascript library or framework attached.
 
 ## Live Demo
 
@@ -35,7 +38,18 @@ npm install audio-tool
 
 2. Start using it in an html file.
 
+<!--
+```html
+<custom-element-demo>
+  <template>
+    <script src="https://unpkg.com/@webcomponents/custom-elements"></script>
+    <script src="dist/audio-tool.min.js"></script>
+  </template>
+</custom-element-demo>
 ```
+-->
+
+```html
 <audio-tool src="content/ff7-prelude.m4a" title="FF7 Prelude"></audio-tool>
 ```
 
