@@ -32,7 +32,7 @@ npm install audio-tool
 
 1. Inject in the script through a script tag in the HEAD of your index.html.
 
-```
+```html
 <script src="node_modules/audio-tool/dist/audio-tool.min.js"></script>
 ```
 
@@ -59,7 +59,7 @@ Using a browser that doesn't natively support custom web components?
 
 Add the following to the HEAD of your index.html.
 
-```
+```html
 <script src="https://unpkg.com/@webcomponents/custom-elements"></script>
 ```
 
@@ -71,7 +71,7 @@ Add the following meta tag for responsiveness across all devices.
 
 > This tag is not specific to this component. This is required for any app to understand the screen size in mobile browsers.
 
-```
+```html
 <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes" />
 ```
 
