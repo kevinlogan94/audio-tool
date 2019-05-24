@@ -61,7 +61,7 @@ function (_HTMLElement) {
   }, {
     key: "addStyles",
     value: function addStyles() {
-      if (!this.hasAttribute("styles") || this.getAttribute("styles") !== "false") {
+      if (!this.hasAttribute("styles") || this.getAttribute("styles") !== "true") {
         //http://jonraasch.com/blog/javascript-style-node
         this.styles = document.createElement("style");
         this.styles.type = "text/css";
