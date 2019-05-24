@@ -77,13 +77,13 @@ Add the following meta tag for responsiveness across all devices.
 
 ## Customizations
 
-| Attribute | Options |                          Description                           |           Default           |
-| :-------: | :-----: | :------------------------------------------------------------: | :-------------------------: |
-|    src    | string  |                  the path to your audio file                   |            none             |
-|   title   | string  |                    Define the track title.                     | The path to your audio file |
-| auto-play | boolean |          Automatically start playing the track onload          |            false            |
-|  styles   | boolean |              Remove all styles for the audio-tool              |            false            |
-|  preload  | string  | Defines if the audio file should be loaded when the page loads |            auto             |
+| Attribute |                type                |                          Description                           |           Default           |
+| :-------: | :--------------------------------: | :------------------------------------------------------------: | :-------------------------: |
+|    src    |               string               |                  the path to your audio file                   |            none             |
+|   title   |               string               |                    Define the track title.                     | The path to your audio file |
+| auto-play |              boolean               |          Automatically start playing the track onload          |            false            |
+|  styles   |              boolean               |  Defines whether the element uses the default styles or not.   |            true             |
+|  preload  | string: `auto`, `metadata`, `none` | Defines if the audio file should be loaded when the page loads |            auto             |
 
 _Note:_ The preload attribute is ignored if autoplay is present.
 
