@@ -9,6 +9,9 @@
     <a href="https://www.npmjs.com/package/audio-tool">
         <img alt="npm version" src="https://img.shields.io/npm/v/audio-tool.svg?style=flat-square">
     </a>
+    <a href="https://travis-ci.org/kevinlogan94/audio-tool">
+      <img alt="Build Status" src="https://travis-ci.org/kevinlogan94/audio-tool.svg?branch=master">
+    </a>
     <a href="https://www.webcomponents.org/element/audio-tool">
         <img alt="Published on webcomponents.org" src="https://img.shields.io/badge/webcomponents.org-published-blue.svg">
     </a>
