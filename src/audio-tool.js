@@ -1,6 +1,6 @@
 /**
  * audio-tool custom web component
- * Create by Kevin Logan
+ * Created by Kevin Logan
  */
 
 class audioTool extends HTMLElement {
