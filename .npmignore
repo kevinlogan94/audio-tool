@@ -1,3 +1,5 @@
 src
 content
 index.html
+karma.config.js
+.travis.yml
