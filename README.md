@@ -104,6 +104,10 @@ _Note:_ The preload attribute is ignored if autoplay is present.
 - [Material UI SVG Icons](https://www.materialui.co/icons)
 - [Audio HTML Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio)
 
+## Contribute
+
+[Contribution Guidelines](https://github.com/kevinlogan94/audio-tool/blob/master/CONTRIBUTING.md)
+
 ## License
 
 [MIT License](https://github.com/kevinlogan94/audio-tool/blob/master/README.md)
