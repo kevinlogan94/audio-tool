@@ -100,4 +100,3 @@ _Note:_ The preload attribute is ignored if autoplay is present.
 ## License
 
 [MIT License](https://github.com/kevinlogan94/audio-tool/blob/master/README.md)
- 
