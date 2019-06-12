@@ -1,7 +1,7 @@
 {
   "name": "audio-tool",
   "description": "A native audio custom web component",
-  "main": "dist/audio-tool.min.js",
+  "main": "dist/audio-tool.js",
   "authors": [
     "Kevin Logan <kevinmlogan7@gmail.com> (kevinmlogan.com)"
   ],
