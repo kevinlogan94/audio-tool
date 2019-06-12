@@ -1,0 +1,28 @@
+{
+  "name": "audio-tool",
+  "description": "A native audio custom web component",
+  "main": "dist/audio-tool.min.js",
+  "authors": [
+    "Kevin Logan <kevinmlogan7@gmail.com> (kevinmlogan.com)"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "web-component",
+    "web-components",
+    "custom-element",
+    "custom-elements",
+    "element",
+    "native",
+    "audio",
+    "tool",
+    "minimalistic"
+  ],
+  "homepage": "https://github.com/kevinlogan94/audio-tool",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
