@@ -41,17 +41,6 @@ npm install audio-tool
 
 2. Start using it in an html file.
 
-<!--
-```html
-<custom-element-demo>
-  <template>
-    <script src="https://unpkg.com/@webcomponents/custom-elements"></script>
-    <script src="dist/audio-tool.min.js"></script>
-  </template>
-</custom-element-demo>
-```
--->
-
 ```html
 <audio-tool src="content/ff7-prelude.m4a" title="FF7 Prelude"></audio-tool>
 ```
